@@ -306,4 +306,4 @@ Place this in `frontend/` as `.env.local`, `.env.mainnet`, or whichever naming y
 
 ## License
 
-MIT License © 2023 Fluxfolio authors and contributors. Feel free to fork and adapt.
+MIT License © 2025 Fluxfolio authors and contributors. Feel free to fork and adapt.
