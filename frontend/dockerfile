@@ -1,0 +1,23 @@
+# Use an official Node.js 18 LTS image based on Alpine Linux
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copy package files and the Prisma folder
+COPY package.json pnpm-lock.yaml ./
+COPY prisma ./prisma
+
+RUN npm install -g pnpm && pnpm install
+
+# Generate the Prisma client (explicitly specifying the schema location)
+RUN pnpm prisma generate --schema=./prisma/schema.prisma
+
+# Copy the rest of the application source code
+COPY . .
+
+# Build the Next.js app using Turbo
+RUN pnpm turbo run build
+
+EXPOSE 3000 3001
+
+CMD ["pnpm", "dev"]
